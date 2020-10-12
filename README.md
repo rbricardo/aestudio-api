@@ -2,6 +2,21 @@
 
 ## Setup
 
+## Table of Contents
+
+- [About](#About)
+- [Dependencies](#Dependencies)
+- [.env Configuration](#.env-Configuration)
+- [Install](#Install)
+- [Running the Project](#Running-the-Project)
+- [Running Tests](#Running-tests)
+- [Test using Postman](#Test-using-Postman)
+- [To do](#To-do)
+
+### About
+
+*AE Studio API* is a service that requests data from a third party service that offers a list of companies. Our API filter those companies bringing the oldest company and the company that has most locations. Also those companies are organized by pages.
+
 ### Dependencies
 
 - [Node.js](https://nodejs.org/en/download/)
@@ -22,7 +37,7 @@ LOGGING_TYPE="dev"
 SERVER_PORT="3333"
 ```
 
-### Installing Packages
+### Install
 
 ```shell
 $ npm i
