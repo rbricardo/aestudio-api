@@ -15,14 +15,28 @@ function buildServiceForResponse(response, responseCode = 200): [CompaniesServic
 describe('getOldestCompany()', () => {
   it('picks company with the oldest location_start_date', async () => {
     const [service, scope] = buildServiceForResponse([
-      { business_name: 'A', location_start_date: '1943-08-09T00:00:00.000' },
-      { business_name: 'B', location_start_date: '1971-03-01T00:00:00.000' },
+      { business_name: 'A', location_start_date: '1971-03-01T00:00:00.000' },
+      { business_name: 'B', location_start_date: '1943-08-09T00:00:00.000' },
+      { business_name: 'C', location_start_date: '2009-05-01T00:00:00.000' },
+    ])
+
+    await expect(service.getOldestCompany()).resolves.toEqual({
+      business_name: 'B',
+      location_start_date: '1943-08-09T00:00:00.000',
+    })
+    scope.done()
+  })
+
+  it('picks company with the oldest location_start_date, deprioritising undefined location_start_date ', async () => {
+    const [service, scope] = buildServiceForResponse([
+      { business_name: 'A', location_start_date: '1971-08-09T00:00:00.000' },
+      { business_name: 'B' },
       { business_name: 'C', location_start_date: '2009-05-01T00:00:00.000' },
     ])
 
     await expect(service.getOldestCompany()).resolves.toEqual({
       business_name: 'A',
-      location_start_date: '1943-08-09T00:00:00.000',
+      location_start_date: '1971-08-09T00:00:00.000',
     })
     scope.done()
   })

@@ -1,23 +1,8 @@
 import { Service } from 'typedi'
-import { getCompanies } from '../data/companies'
+import { getCompanies, Company } from '../data/companies'
 import { transformPaginate } from '../_helpers/utils/pagination'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
-interface Company {
-  business_name: string
-  city: string
-  location_1: {
-    latitude: string
-    longitude: string
-  }
-  location_account: string
-  location_description: string
-  location_start_date: string
-  naics: string
-  primary_naics_description: string
-  street_address: string
-  zip_code: string
-}
 interface Page {
   currentPage: number
   docs: Company
@@ -47,10 +32,11 @@ export default class CompaniesService {
       return null
     }
 
+    const now = Date.now()
     const [oldest] = companies.sort(({ location_start_date: a }, { location_start_date: b }) => {
-      return new Date(a).getTime() - new Date(b).getTime()
+      return new Date(a || now).getTime() - new Date(b || now).getTime()
     })
-    console.log(oldest, 'oldest')
+
     return oldest
   }
 
