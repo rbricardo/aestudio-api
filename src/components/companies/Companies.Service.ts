@@ -1,8 +1,6 @@
 import { Service } from 'typedi'
 import { getCompanies, Company } from '../data/companies'
 import { transformPaginate } from '../_helpers/utils/pagination'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-
 interface Page {
   currentPage: number
   docs: Company
