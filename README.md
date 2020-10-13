@@ -15,7 +15,7 @@
 
 ### About
 
-*AE Studio API* is a service that requests data from a third party service that offers a list of companies. Our API filter those companies bringing the oldest company and the company that has most locations. Also those companies are organized by pages.
+*AE Studio API* is a service that requests data from a third party service that offers a list of companies. Our API filter those companies bringing the oldest company and the company that has most locations. Also those companies are organized with pagination.
 
 ### Dependencies
 
