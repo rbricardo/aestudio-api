@@ -63,4 +63,4 @@ Open it, save it, import it.
 
 ## To do
 
-Implement a cache controller to have a best performance
+Implement a cache controller to have a better performance
